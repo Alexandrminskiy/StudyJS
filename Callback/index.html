@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button type="button">Кнопка</button>
+
+
+    <script>
+        // Функции можно передавать параметрами в другие функции. 
+        // Такие функции-параметры называются коллбэками
+// function each(arr, callback){
+//     let result = [];
+
+//     for(let elem of arr){
+//         result.push(callback(elem));// вызываем функцию-коллбэк
+//     }
+//     return result;
+// }
+
+// let result = each([1,2,3,4,5], function(num){
+//     return num ** 3;
+// })
+// console.log(result);
+// ---------------------------------------------------------------
+// const mainFunc = (argumentArray, argumentCallBack)=>{
+//     let result = []; 
+ 
+//     for(let elem of argumentArray){ 
+//         result.push(argumentCallBack(elem));
+//     } 
+
+//     return result; 
+// }
+// const miniFunc = (num)=> {return num**3}
+// let result = mainFunc([1,2,3,4,5], mainFunc)
+// console.log(result);
+
+// --------------------------------------------------------------
+
+// function doHomework(subject, callback){
+//     console.log(`Начинаю домашнию работу по предмету ${subject}.`);
+//     callback();
+// }
+// function end(){
+//     console.log('Я закончил свою доманию работу')
+// };
+// function q(){
+//     console.log(1 + 1);
+// };
+// // doHomework('математика', end);
+// doHomework('123', q)
+// ----------------------------------------------------------------
+
+function hello(){
+    console.log('Привет, ура!')
+}
+
+function bue(){
+    console.log('Пока')
+}
+
+
+
+// document.querySelector('button').addEventListener('click', button);
+
+function BIGY(hellocallback, buecallback, fin){
+    if(fin){
+        bue();
+    } else {
+        hello();
+    }
+}
+BIGY(hello, bue, 1);
+
+// ----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
