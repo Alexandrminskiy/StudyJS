@@ -56,26 +56,22 @@
 // doHomework('123', q)
 // ----------------------------------------------------------------
 
-function hello(){
-    console.log('Привет, ура!')
+function helloAlert(message){
+    alert(message)
 }
 
-function bue(){
-    console.log('Пока')
+function bueConsole(message){
+    console.log(message)
 }
-
 
 
 // document.querySelector('button').addEventListener('click', button);
 
-function BIGY(hellocallback, buecallback, fin){
-    if(fin){
-        bue();
-    } else {
-        hello();
-    }
+function BIGY(bueCallback){
+    console.log('party in not');
+    bueCallback('buy buy');
 }
-BIGY(hello, bue, 1);
+BIGY(helloAlert);
 
 // ----------------------------------------------------------------
 
