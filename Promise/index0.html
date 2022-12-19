@@ -10,9 +10,35 @@
 
 <body>
     <script>
-        doItAfter(4)
-            .then(() => console.log('Hi'))
-            .then(() => console.log('Hi'))
+        //    let promise = new Promise(function(resolve, reject){
+        //     // функция-исполнитель (executor)
+        //     // 'Певец'
+        //     setTimeout(() => resolve('done'), 1000);
+
+        //    })
+
+        // let promise = new Promise(resolve => resolve("готово!"));
+        // promise.then(alert); // готово! (выведется сразу)
+
+        // function loadScript(src){
+        //     return new Promise(function(resolve, reject){
+        //         let script = document.createElement('script');
+        //         script.src = src;
+
+        //         script.onload = () => resolve(script);
+        //         script.onerror = () => reject(new Error(`Ошибка загрузки скрипта ${src}`));
+        //         document.head.append(script);
+
+        //     })
+        // }
+
+
+        let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js");
+        promise.then(
+            script => alert(`${script.src} загружен!`),
+            error => alert(`Ошибка: ${error.message}`)
+        );
+        promise.then(script => alert('Ещё один обработчик...'));
         
     </script>
 </body>
