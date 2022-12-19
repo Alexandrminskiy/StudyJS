@@ -79,4 +79,4 @@ const deleting = async (id) => {
     const data = res.json();
     // console.log(data);
 }
-deleting(111)
+deleting(111);
