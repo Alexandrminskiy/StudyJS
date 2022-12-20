@@ -11,7 +11,7 @@ const getCats = async () => {
 const newCat = {
     id: 111,
     name: "барон",
-    image: "ntcn",
+    image: "#",
     age: 2,
     rate: 8,
     favorite: false,
@@ -75,5 +75,5 @@ const deleting = async (id) => {
     const data = await res.json();
     console.log(data);
 }
-// deleting(123);
+// deleting(11);
 // adding(newCat)
