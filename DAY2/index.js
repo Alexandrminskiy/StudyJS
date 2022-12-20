@@ -1,4 +1,4 @@
-// api.getcats('alexandrminskiy')
+//GET
 const getCats = async () => {
     const responce = await fetch('https://cats.petiteweb.dev/api/single/alexandrminskiy/show', {
         method: 'GET',
@@ -7,12 +7,11 @@ const getCats = async () => {
 
     console.log(data)
 }
-// getCats()
-
+// POST
 const newCat = {
     id: 111,
     name: "барон",
-    image: "https://telegrator.ru/wp-content/uploads/2021/05/chat_avatar-136.jpg",
+    image: "ntcn",
     age: 2,
     rate: 8,
     favorite: false,
@@ -32,10 +31,9 @@ const addCat = async () => {
     console.log(data)
 }
 
-// addCat()
-
-const changeidObj = { id: 7 }
 // PUT
+const changeidObj = { id: 7 }
+
 const changeCat = async () => {
     const responce = await fetch('https://cats.petiteweb.dev/api/single/alexandrminskiy/update/11', {
         method: 'PUT',
@@ -46,16 +44,16 @@ const changeCat = async () => {
         body: JSON.stringify(changeidObj)
     });
     const data = await responce.json();
+
     console.log(data)
 }
 
 const api = new Api('alexandrminskiy');
-// console.log(api.getCats());
 
 // Промисы
-// api.getCats()
-//     .then(res => res.json())
-//     .then(data => console.log(data))
+api.getCats()
+    .then(res => res.json())
+    .then(data => console.log(data))
 
 // Асинки
 const getting = async () => {
@@ -64,19 +62,18 @@ const getting = async () => {
 
     console.log(data);
 }
-getting()
 
 const adding = async (body) => {
     const res = await api.addCat(body);
-    const data = res.json();
+    const data = await res.json();
 
     console.log(data);
 }
-// adding(newCat)
-configured
+
 const deleting = async (id) => {
     const res = await api.delCat(id);
-    const data = res.json();
-    // console.log(data);
+    const data = await res.json();
+    console.log(data);
 }
-deleting(111);
+// deleting(123);
+// adding(newCat)

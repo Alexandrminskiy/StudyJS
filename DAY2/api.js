@@ -12,40 +12,34 @@ class Api {
         return fetch(`${this.url}${this.name}/show/${id}`)
     }
     getCatsIds() {
-        return fetch(`${this.url}${this.name}/show`)
+        return fetch(`${this.url}${this.name}/ids`)
     }
 
-    addCat(bodyOfCat){
-        fetch(`${this.url}${this.name}/add`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'app;ication/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bodyOfCat)
-    });
-    }
-
-    updCat(changeiPartsOfCat, id){
-        return fetch(`${this.url}${this.name}/update/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Accept': 'app;ication/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(changeiPartsOfCat)
-    });
-    }
-    delCat(id){
-        return fetch(`${this.url}${this.name}/update/${id}`, {
-            method: 'DELETE'
+    addCat(bodyOfCat) {
+        return fetch(`${this.url}${this.name}/add`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'app;ication/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyOfCat)
         });
     }
 
+    updCat(changingPartsOfCat, id) {
+        return fetch(`${this.url}${this.name}/update/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(changingPartsOfCat)
+        });
+      }
 
-
-   
-
-
+    delCat(id) {
+    return fetch(`${this.url}${this.name}/delete/${id}`, {
+      method: 'DELETE'
+    })
+  }
 }
-
