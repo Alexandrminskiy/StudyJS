@@ -28,6 +28,21 @@ $wrapper.addEventListener('click', (event) => {
     }
 })
 
+document.forms.catsForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const data = Object.fromEntries(new FormData(event.target).entries());
+
+    data.age = Number(data.age)
+    data.id = Number(data.id)
+    data.rate = Number(data.rate)
+    data.favorite = data.favorite === 'on' // undefined, off, on
+
+    console.log(data)
+
+    api.addCat(data).then(res => console.log(res)).catch
+})
+
 api.getCats()
     .then((responce) => {
         return responce.json()
