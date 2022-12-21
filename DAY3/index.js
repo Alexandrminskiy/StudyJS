@@ -1,7 +1,11 @@
 const $wrapper = document.querySelector('[data-wrapper]');
+const $addButton = document.querySelector('[data-add_button]');
+const $modal = document.querySelector('[data-modal]');
+const $spinner = document.querySelector('[data-spinner]')
 
 const api = new Api('alexandrminskiy')
 
+// Карточка из бустрапа
 const gerenationCatCard = (cat) => `<div data-card_id=${cat.id} class="card mx-2" style="width: 18rem;">
 <img src="${cat.image}" class="card-img-top" alt="${cat.name}">
 <div class="card-body">
@@ -22,7 +26,10 @@ $wrapper.addEventListener('click', (event) => {
             api.delCat(catId);
             $currentCard.remove()
             break;
+
         case 'show':
+            //по нажатию должна открыватся модалка
+            break;
         default:
             break;
     }
@@ -40,7 +47,13 @@ document.forms.catsForm.addEventListener('submit', (event) => {
 
     console.log(data)
 
-    api.addCat(data).then(res => console.log(res)).catch
+    api.addCat(data).then(res => res.ok && $modal.classList.add('hidden'))
+    //catch
+    // $modal.classList.add('hidden')
+})
+
+$addButton.addEventListener('click', () => {
+    $modal.classList.remove('hidden')
 })
 
 api.getCats()
@@ -48,10 +61,13 @@ api.getCats()
         return responce.json()
     })
     .then((data) => {
-        console.log(data);
-        data.forEach(cat => {
-            $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat))
-        })
+        setTimeout(() => {
+            $spinner.classList.add('hidden')
+            data.forEach(cat => {
+                $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat))
+            })
+        }, 2000);
+
     });
 
 
