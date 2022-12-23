@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- прочитаем ответ как строку и выведем её в элемент с id="result": -->
+
+    <!-- <button type="button" id="get-text">Получить текст с сервера</button>
+    <div id="result"></div>
+    <script>
+        document.querySelector('#get-text').addEventListener('click', function() {
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => {
+                    if (response.ok) {
+                        response.text().then(data => {
+                            // выведем данные в #result
+                            document.querySelector('#result').innerHTML = data;
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }) -->
+
+
+    <!-- async-await: -->
+
+    <button type="button" id="get-text">Получить текст с сервера</button>
+    <div id="result"></div>
+
+    <script>
+        document.querySelector('#get-text').onclick = async () => {
+            try {
+                let response = await fetch('https://cats.petiteweb.dev/api/single/alexandrminskiy/show');
+                if (response.ok) {
+                    let data = await response.text();
+                    // выведем данные в #result
+                    document.querySelector('#result').innerHTML = data;
+                }
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    </script>
+
+    </script>
+</body>
+
+</html>

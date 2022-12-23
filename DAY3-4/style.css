@@ -5,13 +5,13 @@
     left: 0;
     position: absolute;
     z-index: 3;
-    background: rgb(0,0,0,0.5);
+    background: rgb(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.custom-modal{
+.custom-modal {
     background-color: white;
     display: flex;
     justify-content: center;
@@ -20,9 +20,10 @@
 
 }
 
-.hidden{
+.hidden {
     display: none;
 }
+
 .btn {
     margin: 1px;
     padding: 4px;

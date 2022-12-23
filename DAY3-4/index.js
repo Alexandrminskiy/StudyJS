@@ -2,11 +2,12 @@ const $wrapper = document.querySelector('[data-wrapper]');
 const $addButton = document.querySelector('[data-add_button]');
 const $modal = document.querySelector('[data-modal]');
 const $spinner = document.querySelector('[data-spinner]')
+const $closeButton = document.querySelector('#close')
 
 const api = new Api('alexandrminskiy')
 
 // Карточка из бустрапа
-const gerenationCatCard = (cat) => `<div data-card_id=${cat.id} class="card mx-2" style="width: 18rem;">
+const gerenationCatCard = (cat) => { return `<div data-card_id=${cat.id} class="card mx-2" style="width: 18rem;">
 <img src="${cat.image}" class="card-img-top" alt="${cat.name}">
 <div class="card-body">
   <h5 class="card-title">${cat.name}</h5>
@@ -15,7 +16,7 @@ const gerenationCatCard = (cat) => `<div data-card_id=${cat.id} class="card mx-2
   <button data-action='delete' class="btn btn-danger">Удалить</button>
   <button data-action='edit' class="btn btn-success">Редактировать</button>
 </div>
-</div>`
+</div>`}
 
 $wrapper.addEventListener('click', (event) => {
     // console.log(event.target.dataset);
@@ -32,7 +33,7 @@ $wrapper.addEventListener('click', (event) => {
             //по нажатию должна открыватся модалка, подробная информация
             break;
 
-            case 'edit':
+        case 'edit':
             console.log(event.target);
             // найти id
             // Запрос к api.getOneCat(id)
@@ -42,6 +43,10 @@ $wrapper.addEventListener('click', (event) => {
         default:
             break;
     }
+})
+
+$closeButton.addEventListener('click', () => {
+    $modal.classList.add('hidden');
 })
 
 document.forms.catsForm.addEventListener('submit', (event) => {
@@ -56,14 +61,36 @@ document.forms.catsForm.addEventListener('submit', (event) => {
 
     console.log(data)
 
-    api.addCat(data).then(res => res.ok && $modal.classList.add('hidden'))
-    //catch
-    // $modal.classList.add('hidden')
+    api.addCat(data)
+        .then(res => {
+            return res.ok ? $modal.classList.add('hidden') : res.json()
+        })
+        .then(errMsg => console.log(errMsg))
 })
+
+const reEddingCats = async () => {
+    // Запрашиваем новых котов
+    // Удаляем старых котов
+    // генирируем и вставляем в div этих новых котов
+    return $modal.classList.add('hidden')
+
+}
+
 
 $addButton.addEventListener('click', () => {
     $modal.classList.remove('hidden');
 })
+
+const realGetCatAsyncAwait = async () => {
+    const responce = await api.getCats();
+    const cats = await responce.json();
+
+    cats.forEach(cat => {
+        $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat))
+    });
+}
+
+realGetCatAsyncAwait()
 
 api.getCats()
     .then((responce) => {
