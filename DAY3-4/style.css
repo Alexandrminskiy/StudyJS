@@ -42,3 +42,7 @@
 .btn-danger {
     float: right;
 }
+
+.error {
+    color: red;
+}

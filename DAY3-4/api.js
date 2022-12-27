@@ -8,7 +8,7 @@ class Api {
   getCats() {
     return fetch(`${this.url}${this.name}/show`)
   }
-  getCat(id) {
+  getCatIds(id) {
     return fetch(`${this.url}${this.name}/show/${id}`)
   }
   getCatsIds() {
@@ -19,7 +19,7 @@ class Api {
     return fetch(`${this.url}${this.name}/add`, {
       method: 'POST',
       headers: {
-        'Accept': 'app;ication/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(bodyOfCat)
