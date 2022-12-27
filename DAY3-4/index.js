@@ -1,20 +1,21 @@
-const $wrapper = document.querySelector('[data-wrapper]');
-const $addButton = document.querySelector('[data-add_button]');
-const $modal = document.querySelector('[data-modal]');
-const $spinner = document.querySelector('[data-spinner]')
-const $closeButton = document.querySelector('#close')
+// const $wrapper = document.querySelector('[data-wrapper]');
+// const $addButton = document.querySelector('[data-add_button]');
+// const $modal = document.querySelector('[data-modal]');
+// const $spinner = document.querySelector('[data-spinner]')
+// const $closeButton = document.querySelector('#close')
 
 const api = new Api('alexandrminskiy')
 
 // Карточка из бустрапа
-const gerenationCatCard = (cat) => { return `<div data-card_id=${cat.id} class="card mx-2" style="width: 18rem;">
+const gerenationCatCard = (cat) => {
+    return `<div data-card_id=${cat.id} class="card mx-2" style="width: 18rem;">
 <img src="${cat.image}" class="card-img-top" alt="${cat.name}">
 <div class="card-body">
   <h5 class="card-title">${cat.name}</h5>
   <p class="card-text">${cat.description}</p>
   <button data-action='show' class="btn btn-primary">Показать</button>
   <button data-action='delete' class="btn btn-danger">Удалить</button>
-  <button data-action='edit' class="btn btn-success">Редактировать</button>
+  <button data-action='edit' class="btn btn-success">Изменить</button>
 </div>
 </div>`}
 
@@ -45,41 +46,39 @@ $wrapper.addEventListener('click', (event) => {
     }
 })
 
-$closeButton.addEventListener('click', () => {
-    $modal.classList.add('hidden');
-})
+// addForm.js
+// $closeButton.addEventListener('click', () => {
+//     $modal.classList.add('hidden');
+// })
 
-document.forms.catsForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+// addForm.js
+// document.forms.catsForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
 
-    const data = Object.fromEntries(new FormData(event.target).entries());
+//     const data = Object.fromEntries(new FormData(event.target).entries());
 
-    data.age = Number(data.age)
-    data.id = Number(data.id)
-    data.rate = Number(data.rate)
-    data.favorite = data.favorite === 'on' // undefined, off, on
+//     data.age = Number(data.age)
+//     data.id = Number(data.id)
+//     data.rate = Number(data.rate)
+//     data.favorite = data.favorite === 'on' // undefined, off, on
 
-    console.log(data)
+//     console.log(data)
 
-    api.addCat(data)
-        .then(res => {
-            return res.ok ? $modal.classList.add('hidden') : res.json()
-        })
-        .then(errMsg => console.log(errMsg))
-})
+//     api.addCat(data)
+//         .then(res => {
+//             return res.ok ? $modal.classList.add('hidden') : res.json()
+//         })
+//         .then(errMsg => console.log(errMsg))
+// })
 
 const reEddingCats = async () => {
-    // Запрашиваем новых котов
-    // Удаляем старых котов
-    // генирируем и вставляем в div этих новых котов
     return $modal.classList.add('hidden')
-
 }
 
-
-$addButton.addEventListener('click', () => {
-    $modal.classList.remove('hidden');
-})
+// addForm.js
+// $addButton.addEventListener('click', () => {
+//     $modal.classList.remove('hidden');
+// })
 
 const realGetCatAsyncAwait = async () => {
     const responce = await api.getCats();

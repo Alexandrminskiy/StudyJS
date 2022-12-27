@@ -25,6 +25,20 @@
 }
 
 .btn {
-    margin: 1px;
+    margin: 4px;
     padding: 4px;
+}
+
+
+
+.btn-dark {
+    float: right;
+}
+
+.btn-primary {
+    float: left;
+}
+
+.btn-danger {
+    float: right;
 }
