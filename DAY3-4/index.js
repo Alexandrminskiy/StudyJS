@@ -14,7 +14,7 @@ const gerenationCatCard = (cat) => {
 
 api.getCats()
     .then((responce) => {
-        return responce.json()
+      return responce.json()
     })
     .then((data) => {
         setTimeout(() => {

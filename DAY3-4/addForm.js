@@ -8,8 +8,8 @@ $closeButton.addEventListener('click', () => {
 document.forms.catsForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    $errorMessage.innerHTML = '';
-
+    // $errorMessage.innerHTML = ' ';
+    console.log($errorMessage.innerHTML);
     const data = Object.fromEntries(new FormData(event.target).entries());
 
     data.age = Number(data.age)
