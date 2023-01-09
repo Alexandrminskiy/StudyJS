@@ -25,46 +25,10 @@
 }
 
 .btn {
-    margin: 4px;
-    padding: 4px;
+    margin: 2px 0px;
 }
 
-
-
-.btn-dark {
-    float: right;
-}
-
-.btn-primary {
-    float: left;
-}
-
-.btn-danger {
-    float: right;
-}
 
 .error {
     color: red;
-}
-
-.show-wrapper {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: 3;
-    background: rgb(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.show-modal {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    padding: 12px;
-    border-radius: 8px;
-
 }

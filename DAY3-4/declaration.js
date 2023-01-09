@@ -4,5 +4,6 @@ const $wrapper = document.querySelector('[data-wrapper]');
 const $spinner = document.querySelector('[data-spinner]');
 const $closeButton = document.querySelector('#close');
 const $errorMessage = document.querySelector('[data-errmsg]');
-
+const $modalAbout = document.querySelector("[data-modal_about]");
+const $modalEdit = document.querySelector("[data-modal_edit]");
 const api = new Api('alexandrminskiy')

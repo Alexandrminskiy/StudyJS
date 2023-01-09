@@ -8,7 +8,7 @@ class Api {
   getCats() {
     return fetch(`${this.url}${this.name}/show`)
   }
-  getCatIds(id) {
+  getCat(id) {
     return fetch(`${this.url}${this.name}/show/${id}`)
   }
   getCatsIds() {

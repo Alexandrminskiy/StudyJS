@@ -22,17 +22,12 @@
         <h1 class="text-center mb-5">Милые котики</h1>
 
         <div class="d-flex justify-content-center mb-5">
-            <button data-add_button class="btn btn-success">Создать</button>
+            <button data-add_button class="btn btn-success btn-sm">Создать</button>
         </div>
-        <!-- спинер -->
-        <div data-spinner class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <!-- сюда вставляются коты -->
         <div data-wrapper class="d-flex justify-content-center"></div>
     </div>
     <!-- другие модалки встовляются сюда -->
-<div data-modal class="modal-wrapper hidden">
+    <div data-modal class="modal-wrapper hidden">
         <div class="custom-modal">
             <form name="catsForm">
                 <input type="number" name="id" placeholder="Id" class="form-control mb-2" id="exampleInputEmail4" />
@@ -48,34 +43,44 @@
                     id="exampleInputEmail6" />
                 <div class="mb-3 form-check">
                     <input name="favorite" type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Нажми если нравиться</label>
+                    <label class="form-check-label" for="exampleCheck1">Избранный</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Окей
+                <button type="submit" class="btn btn-primary btn-sm">Окей</button>
+                <button type="button" class="btn btn-dark btn-sm" id="close">Закрыть
                 </button>
-                <button type="button" class="btn btn-dark" id="close">Закрыть
-                </button>
-                <br>
-                <br>
                 <p class="error" data-errmsg></p>
             </form>
         </div>
     </div>
-<!--  -->
-<div data-show class="custom-wrapper hidden"></div>
-        <div class="show-modal">
-            <form name="showForm">
-                <input type="number" name="id" placeholder="Id" class="form-control mb-2" id="exampleInputEmail4" />
-               </div>
-                <button type="submit" class="btn btn-primary">Окей
-                </button>
-                <button type="button" class="btn btn-dark" id="close">Закрыть
-                </button>
-                <br>
-                <br>
-                <p class="error" data-errmsg></p>
+    <!--  -->
+    <div data-modal_about class="modal-wrapper hidden">
+        <div class="custom-modal">
+            <p class="cat-description"></p>
+        </div>
+    </div>
+    <div data-modal_edit class="modal-wrapper hidden">
+        <div class="custom-modal">
+            <form name="updateForm">
+                <input hidden data-cat_id type="number" name="id" placeholder="Id" class="form-control mb-2"
+                    id="exampleInputEmail4" />
+                <input data-cat_name type="text" name="name" placeholder="Name" class="form-control mb-2"
+                    id="exampleInputEmail1" />
+                <input data-cat_description type="text" name="description" placeholder="About" class="form-control mb-2"
+                    id="exampleInputEmail2" />
+                <input data-cat_image type="text" name="image" placeholder="Image URL" class="form-control mb-2"
+                    id="exampleInputEmail3" />
+                <input data-cat_age type="number" name="age" placeholder="Age" class="form-control mb-2"
+                    id="exampleInputEmail5" />
+                <input data-cat_rate type="number" name="rate" placeholder="Rating" class="form-control mb-2"
+                    id="exampleInputEmail6" />
+                <div class="mb-3 form-check">
+                    <input data-cat_favorite name="favorite" type="checkbox" class="form-check-input"
+                        id="exampleCheck1" />
+                    <label class="form-check-label" for="exampleCheck1">Favorite</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
-
-
+        </div>
     </div>
 </body>
 
