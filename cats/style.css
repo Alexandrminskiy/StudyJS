@@ -12,10 +12,15 @@
 }
 .custom-modal{
   background-color: white;
-  display: flex;
+  display:flexbox;
   justify-content: center;
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
+  align-items: center;
+  top: 0;
+  left: 0;
+  /* height: 30%; */
+  width: 30%;
   
 }
 .hidden{

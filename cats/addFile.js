@@ -4,6 +4,8 @@ $addButton.addEventListener('click', () => {
 $closeButton.addEventListener('click', () => {
   $modal.classList.add('hidden')
 })
+
+// Закрытие окна о кошке
 $closeButtonShow.addEventListener('click', () => {
   $modalShow.classList.add('hidden')
 });
@@ -42,6 +44,5 @@ const reGenData = async () => {
   newCats.forEach(cat => {
     $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat));
   });
-
   return $modal.classList.add('hidden')
 }

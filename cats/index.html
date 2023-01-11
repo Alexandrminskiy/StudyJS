@@ -52,11 +52,35 @@
 <!-- О кошке модальное окно -->
   <div data-modal_show class="modal-wrapper hidden">
     <div class="custom-modal">
-      <p class="cat_name"></p>
-      <p class="cat_age"></p>
+      <h5 class="cat_name"></h5>
       <p class="cat_description"></p>
-      <button type="button" class="btn btn-danger" data-btncloseshow id="close">Закрыть</button>
+      <p class="cat_age"></p>
+      <div class='d-flex justify-content-between'>
+        <button data-action="edit" class="btn btn-success btn-sm">Изменить</button>
+        <button type="button" class="btn btn-danger btn-sm pull-right" data-btncloseshow id="close">Закрыть</button>
+        </div>
     </div>
   </div>
+
+
+  <!-- Modal
+<div data-modal_show class="modal-wrapper hidden" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="${cat.image}" class="img_card_show" alt="${cat.name}">
+        <h5 class="cat_name" class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <p class="cat_description"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm">Изменить</button>
+        <button type="button" class="btn btn-danger btn-sm" data-btncloseshow id="close">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 </body>
 </html>

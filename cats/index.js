@@ -3,9 +3,9 @@ api.getCats()
     return responce.json()
   })
   .then((data) => {
-      data.forEach(cat => {
-        $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat))
-      });
+    data.forEach(cat => {
+      $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat))
+    });
 
   });
 
@@ -26,8 +26,10 @@ $wrapper.addEventListener('click', (event) => {
         const response = await api.getCat(catIdAbout);
         const data = await response.json();
         document.querySelector(".cat_name").innerHTML = `${data.name}`;
+        document.querySelector(".cat_age").innerHTML = `Лет  ${data.age}`;
         document.querySelector(".cat_description").innerHTML = `${data.description}`;
       };
+
       aboutCat(catIdAbout);
       break;
       break;
