@@ -1,14 +1,3 @@
-api.getCats()
-  .then((responce) => {
-    return responce.json()
-  })
-  .then((data) => {
-    data.forEach(cat => {
-      $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat))
-    });
-
-  });
-
 $wrapper.addEventListener('click', (event) => {
   switch (event.target.dataset.action) {
     case 'delete':
@@ -26,28 +15,53 @@ $wrapper.addEventListener('click', (event) => {
         const response = await api.getCat(catIdAbout);
         const data = await response.json();
         document.querySelector(".cat_name").innerHTML = `${data.name}`;
-        document.querySelector(".cat_age").innerHTML = `Лет  ${data.age}`;
-        document.querySelector(".cat_description").innerHTML = `${data.description}`;
+        document.querySelector(".cat_age").innerHTML = `Возраст:  ${data.age}`;
+        document.querySelector(".cat_description").innerHTML = `<div class='description_cat'>${data.description}</div>`;
       };
-
       aboutCat(catIdAbout);
       break;
-      break;
+    case "edit":
+      $modalEdit.classList.remove("hidden");
+      const $currentCardEdit = event.target.closest("[data-card_id]");
+      const catIdEdit = $currentCardEdit.dataset.card_id;
 
-    case 'edit':
-      console.log(event.target);
-      // найти id
-      // запрос к api.getOneCat(id)
-      // открываться модалка с формой редактирования
-      // set data в поля формы
+      const editCat = async (catIdEdit) => {
+        const response = await api.getCat(catIdEdit);
+        const data = await response.json();
+        Object.keys(data).forEach((key) => {
+          document.forms.updateForm[key].value = data[key];
+        });
+        document.querySelector("[data-cat_id]").value = `${data.id}`;
+        document.querySelector("[data-cat_age]").value = `${data.age}`;
+      };
+      editCat(catIdEdit);
       break;
     default:
       break;
   }
-})
+});
 
-console.log($closeButton)
 
+
+// LocalStorage
+const dataFromStorage = localStorage.getItem(document.forms.catsForm.name);
+
+const parsedDataFromStorage = dataFromStorage
+  ? JSON.parse(dataFromStorage)
+  : null;
+
+if (parsedDataFromStorage) {
+  Object.keys(parsedDataFromStorage).forEach((key) => {
+    document.forms.catsForm[key].value = parsedDataFromStorage[key];
+  });
+}
+
+document.forms.catsForm.addEventListener("input", () => {
+  const formData = Object.fromEntries(
+    new FormData(document.forms.catsForm).entries()
+  );
+  localStorage.setItem(document.forms.catsForm.name, JSON.stringify(formData));
+});
 
 //TODO: добавить форму редактирования
 //TODO: сделать закрытие модалок по клику на крестик или на пространство вокруг

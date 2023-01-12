@@ -14,35 +14,62 @@ $closeButtonShow.addEventListener('click', () => {
 
 
 
-document.forms.catsForm.addEventListener('submit', (event) => {
-  event.preventDefault();
 
-  $errorMessage.innerHTML = '';
+
+
+document.forms.updateForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
   const data = Object.fromEntries(new FormData(event.target).entries());
 
-  data.age = Number(data.age)
-  data.id = Number(data.id)
-  data.rate = Number(data.rate)
-  data.favorite = data.favorite === 'on'
+  data.age = Number(data.age);
+  data.rate = Number(data.rate);
+  data.favorite = data.favorite === "on";
+  
+  const catIdUpdate = document.querySelector("[data-cat_id]").value;
+  const updateCat = async (data, catIdUpdate) => {
+    const response = await api.updCat(data, catIdUpdate);
+    const cat = await response.json();
+    gettingCats();
+    return $modalEdit.classList.add("hidden");
+  };
+  updateCat(data, catIdUpdate);
+});
 
-  api.addCat(data)
-    .then(res => {
-      return res.ok ? reGenData() : res.json()
-    })
-    .then(errMsg => {
-      return $errorMessage.innerHTML = errMsg?.message
-    })
-})
+$addButton.addEventListener("click", () => {
+  $modal.classList.remove("hidden");
+});
 
-const reGenData = async () => {
-  const responce = await api.getCats();
-  const newCats = await responce.json();
-
-  $wrapper.childNodes.forEach(elment => elment.remove());
-
-  newCats.forEach(cat => {
-    $wrapper.insertAdjacentHTML('beforeend', gerenationCatCard(cat));
+const gettingCats = async () => {
+  const response = await api.getCats();
+  const data = await response.json();
+  $wrapper.replaceChildren();
+  data.forEach((cat) => {
+    $wrapper.insertAdjacentHTML("beforeend", generationCatCard(cat));
   });
-  return $modal.classList.add('hidden')
-}
+  $errorMessage.innerHTML = "";
+  return $modal.classList.add("hidden");
+};
+gettingCats();
+
+document.forms.catsForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const data = Object.fromEntries(new FormData(event.target).entries());
+
+  data.age = Number(data.age);
+  data.id = Number(data.id);
+  data.rate = Number(data.rate);
+  data.favorite = data.favorite === "on";
+
+  const addingCat = async (data) => {
+    const response = await api.addCat(data);
+    const errorMsg = await response.json();
+    if (response.ok) {
+      gettingCats();
+    } else {
+      $errorMessage.innerHTML = errorMsg.message;
+    }
+  };
+  addingCat(data);
+});
